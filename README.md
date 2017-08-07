@@ -1,6 +1,6 @@
-# web-started-project
+# bounty-web
 
-The best dang web starter project this side of the Charles
+Bug bounty dapp web app
 
 ## Setup
 
