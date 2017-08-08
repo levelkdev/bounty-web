@@ -2,7 +2,6 @@
 
 require('dotenv').config()
 
-const swig = require('swig')
 const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
@@ -11,9 +10,6 @@ const root = path.resolve(__dirname, '..')
 
 const app = express()
 
-app.enable('trust proxy')
-app.set('view engine', 'html')
-app.engine('.html', swig.renderFile)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())

@@ -11,9 +11,7 @@ let conf = {
     publicPath: '/assets/',
     path: path.resolve(__dirname, 'assets')
   },
-  entry: [
-    './src/client/index.js'
-  ],
+  entry: ['babel-polyfill', './src/client/index.js'],
   module: {
     rules: [
       {
