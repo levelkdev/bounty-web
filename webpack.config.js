@@ -54,10 +54,11 @@ let conf = {
     ]
   },
   resolve: {
+    symlinks: false,
     modules: [
-      path.resolve('./src'),
-      path.resolve('./src/client'),
-      path.resolve('./node_modules')
+      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'src/client'),
+      path.resolve(__dirname, 'node_modules')
     ]
   },
   plugins: [

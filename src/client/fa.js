@@ -11,6 +11,4 @@ _.forEach(fontAwesome, (faIconClass, faProp) => {
   }
 })
 
-console.log('FA: ', fa)
-
 export default fa
