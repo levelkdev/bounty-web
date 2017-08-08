@@ -2,8 +2,16 @@ import React from 'react'
 import { BugBountyFactory } from 'bounty-contracts'
 
 export default () => {
-  const onClickHandler = () => {
-    console.log('BugBountyFactory: ', BugBountyFactory)
+  const onClickHandler = async () => {
+    const bb = await BugBountyFactory.new(
+      500,
+      400,
+      300,
+      200,
+      100,
+      'asdflkjasdflkjadsf'
+    )
+    console.log('bb: ', bb)
   }
 
   return (
