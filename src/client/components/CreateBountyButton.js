@@ -1,12 +1,9 @@
 import React from 'react'
-import bountyContracts from 'bounty-contracts'
+import contracts from 'eth/contracts'
 
 export default () => {
   const onClickHandler = async () => {
-    const { BugBounty, BugBountyFactory } = bountyContracts({
-      web3: window.web3,
-      from: window.web3.eth.accounts[0]
-    })
+    const { BugBounty, BugBountyFactory } = contracts()
     const bugBountyFactory = await BugBountyFactory.deployed()
 
     const createTx = await bugBountyFactory.createBugBounty(
