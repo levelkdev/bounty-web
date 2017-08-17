@@ -1133,13 +1133,12 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bounty-contracts@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/bounty-contracts/-/bounty-contracts-0.1.6.tgz#8709cf971217424a40ab9c8b188b7139200923ad"
+bounty-contracts@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/bounty-contracts/-/bounty-contracts-0.1.9.tgz#2486f5883f180abc42f526830708fc14b780cac1"
   dependencies:
     ethjs-abi "^0.2.0"
     truffle-blockchain-utils "^0.0.3"
-    truffle-ext "^0.1.5"
     zeppelin-solidity "^1.2.0"
 
 brace-expansion@^1.1.7:
@@ -6214,12 +6213,6 @@ truffle-blockchain-utils@^0.0.3:
   resolved "https://registry.yarnpkg.com/truffle-blockchain-utils/-/truffle-blockchain-utils-0.0.3.tgz#ae8a111ec124d96504f0e042c6f205c0b3817e29"
   dependencies:
     web3 "^0.20.1"
-
-truffle-ext@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/truffle-ext/-/truffle-ext-0.1.5.tgz#094c230e57e3bdf1a9d611de84966fa1bd159301"
-  dependencies:
-    lodash "^4.17.4"
 
 truffle-hdwallet-provider@0.0.3:
   version "0.0.3"
