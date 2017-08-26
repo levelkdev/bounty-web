@@ -17,6 +17,14 @@ app.use(cookieParser())
 const port = process.env.PORT
 const indexPath = path.join(__dirname, 'index.html')
 
+const indexResp = (req, res) => {
+  if (req.url === '/') {
+    res.redirect('/home')
+  } else {
+    res.sendFile(indexPath)
+  }
+}
+
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack')
   const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -45,13 +53,13 @@ if (process.env.NODE_ENV !== 'production') {
     if (req.url.indexOf('assets/') >= 0) {
       next()
     } else {
-      res.sendFile(indexPath)
+      indexResp(req, res)
     }
   })
 } else {
   app.use('/assets', express.static(path.join(root, '/assets')))
   app.get('*', (req, res) => {
-    res.sendFile(indexPath)
+    indexResp(req, res)
   })
 }
 
