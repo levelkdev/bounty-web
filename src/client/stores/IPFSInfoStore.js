@@ -1,8 +1,6 @@
 import { observable, action, computed } from 'mobx'
 import { fromPromise, REJECTED } from 'mobx-utils'
-import ipfsAPI from 'ipfs-api'
-
-const ipfs = ipfsAPI('localhost', '5001')
+import ipfs from 'data/ipfsClient'
 
 class IPFSInfoStore {
   @observable result

@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import contracts from 'eth/contracts'
+import formCss from 'styles/form.scss'
 
 export default inject('CreateBountyFormStore')(observer(props => {
 
@@ -16,29 +16,27 @@ export default inject('CreateBountyFormStore')(observer(props => {
   }
 
   const onClickHandler = async () => {
-    const { BugBounty, BugBountyFactory } = contracts()
-    const bugBountyFactory = await BugBountyFactory.deployed()
-
-    const createTx = await bugBountyFactory.createBugBounty(
+    CreateBountyFormStore.createBugBounty(
       500,
       400,
       300,
       200,
       100,
-      title
+      title,
+      description
     )
-    console.log('tx: ', createTx)
-    const address = createTx.logs[0].args.bugBounty
-    const bugBounty = await BugBounty.at(address)
-    console.log('bugBounty: ', bugBounty)
-    const state = await bugBounty.state()
-    console.log(state.output())
   }
 
   return (
-    <div>
-      <input onChange={onTitleChangeHandler} value={title} />
-      <input onChange={onDescriptionChangeHandler} value={description} />
+    <div className={formCss.form}>
+      <div className={formCss.fieldGroup}>
+        <div>Title</div>
+        <input onChange={onTitleChangeHandler} value={title} />
+      </div>
+      <div className={formCss.fieldGroup}>
+        <div>Description</div>
+        <input onChange={onDescriptionChangeHandler} value={description} />
+      </div>
       <button onClick={onClickHandler}>Submit</button>
     </div>
   )
