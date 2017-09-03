@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react'
 import formCss from 'styles/form.scss'
 
 export default inject('CreateBountyFormStore')(observer(props => {
-
   const { CreateBountyFormStore } = props
   const { title, description } = CreateBountyFormStore
 

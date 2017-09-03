@@ -6,6 +6,7 @@ import en from 'react-intl/locale-data/en'
 import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import it from 'react-intl/locale-data/it'
+import BountyDataStore from 'stores/BountyDataStore'
 import CreateBountyFormStore from 'stores/CreateBountyFormStore'
 import IPFSInfoStore from 'stores/IPFSInfoStore'
 import RootStore from 'stores/RootStore'
@@ -18,6 +19,7 @@ const language = userLanguage(navigator)
 const messages = getLocaleData(language)
 
 const stores = {
+  BountyDataStore,
   CreateBountyFormStore,
   IPFSInfoStore,
   RootStore
