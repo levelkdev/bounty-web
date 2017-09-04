@@ -18,7 +18,7 @@ const Routes = () =>
       <Route path='/home' component={Home} />
       <Route path='/ipfs' component={IPFS} />
       <Route path='/new-bounty' component={NewBounty} />
-      <Route path='/bounty/:address' component={Bounty} />
+      <Route path='/bounties/:address' component={Bounty} />
     </App>
   </Router>
 

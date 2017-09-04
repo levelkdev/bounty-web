@@ -7,13 +7,23 @@ class BountyDataStore {
   @observable bountyAddress
   @observable contractResult = {}
   @observable metadataResult = {}
+  @observable verifyResult = {}
 
   @action async fetch (address) {
     this.bountyAddress = address
     this.contractResult = fromPromise(this.fetchContract(address))
     this.contractResult.then(() => {
       this.metadataResult = fromPromise(getBountyData(this.ipfsHash))
+      return this.metadataResult
+    }).then(() => {
+      this.verifyResult = fromPromise(this.verifyBounty(address))
     })
+  }
+
+  @action clear () {
+    this.bountyAddress = undefined
+    this.contractResult = {}
+    this.metadataResult = {}
   }
 
   @computed get contractProps () {
@@ -46,6 +56,14 @@ class BountyDataStore {
     const bounty = await BugBounty.at(address)
     const state = await bounty.state()
     return state
+  }
+
+  async verifyBounty (address) {
+    const { BugBountyFactory } = contracts()
+    const bountyFactory = await BugBountyFactory.deployed()
+    const verified = await bountyFactory.verifyBounty.call(address)
+    console.log('VERIFIED? ', verified)
+    return verified
   }
 }
 

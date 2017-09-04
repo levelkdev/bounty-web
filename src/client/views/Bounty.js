@@ -6,6 +6,7 @@ import BountyData from 'components/BountyData'
 export default class Bounty extends Component {
   componentWillMount () {
     const { BountyDataStore } = this.props
+    BountyDataStore.clear()
     const bountyAddress = this.props.match.params.address
     BountyDataStore.fetch(bountyAddress)
   }

@@ -20,7 +20,7 @@ class CreateBountyFormStore {
     const bugBountyFactory = await BugBountyFactory.deployed()
 
     const ipfsDataHash = await storeBountyData({ title, description })
-    console.log('BOUNTY DATA STORED AT: ', ipfsDataHash)
+    console.log('ipfs hash: ', ipfsDataHash)
 
     const createTx = await bugBountyFactory.createBugBounty(
       p1,
@@ -33,13 +33,12 @@ class CreateBountyFormStore {
     )
     const address = createTx.logs[0].args.bugBounty
     const bugBounty = await BugBounty.at(address)
-    console.log('bugBounty: ', bugBounty)
     const state = await bugBounty.state()
     const stateOutput = state.output()
     console.log(stateOutput)
 
-    const storeRes = await storeBountyAddress(address)
-    console.log('STORE RES: ', storeRes)
+    const storeBountyRes = await storeBountyAddress(address)
+    return storeBountyRes
   }
 }
 
