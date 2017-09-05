@@ -8,6 +8,22 @@ Bug bounty dapp web app
 
 `yarn start` - runs it on http://localhost:8080
 
+### IPFS Setup
+
+[Install IPFS](https://ipfs.io/docs/install/)
+
+`ipfs init` - to initialize IPFS node
+
+Then configure IPFS to accept CORS requests
+
+https://github.com/ipfs/js-ipfs-api#cors
+
+```
+$ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
+$ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
+$ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods "[\"GET\", \"POST\", \"PUT\", \"DELETE\"]"
+```
+
 ## Development
 
 ### Stack
