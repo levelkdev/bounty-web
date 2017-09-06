@@ -51,6 +51,12 @@ class BountyDataStore {
     return this.metadata.description
   }
 
+  @computed get verified () {
+    if (this.verifyResult.state === FULFILLED) {
+      return this.verifyResult.value ? 'True' : 'False'
+    }
+  }
+
   async fetchContract (address) {
     const { BugBounty } = contracts()
     const bounty = await BugBounty.at(address)
@@ -62,7 +68,6 @@ class BountyDataStore {
     const { BugBountyFactory } = contracts()
     const bountyFactory = await BugBountyFactory.deployed()
     const verified = await bountyFactory.verifyBounty.call(address)
-    console.log('VERIFIED? ', verified)
     return verified
   }
 }
