@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx'
-import { fromPromise, FULFILLED } from 'mobx-utils'
+import { fromPromise, FULFILLED, PENDING, REJECTED } from 'mobx-utils'
 import contracts from 'eth/contracts'
 
 class BountyListStore {
@@ -14,6 +14,16 @@ class BountyListStore {
       return this.result.value
     }
     return []
+  }
+
+  @computed get isFetching () {
+    return this.result.state === PENDING
+  }
+
+  @computed get error () {
+    if (this.result.state === REJECTED) {
+      return JSON.stringify(this.result.value)
+    }
   }
 
   async fetchBounties () {
