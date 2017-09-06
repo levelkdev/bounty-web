@@ -27,6 +27,12 @@ class BountyDataStore {
     this.metadataResult = {}
   }
 
+  @computed get contract () {
+    if (this.contractResult.state === FULFILLED) {
+      return this.contractResult.value
+    }
+  }
+
   @computed get contractProps () {
     if (this.contractResult.state === FULFILLED) {
       return this.contractResult.value.props
@@ -56,6 +62,10 @@ class BountyDataStore {
     if (this.verifyResult.state === FULFILLED) {
       return this.verifyResult.value ? 'True' : 'False'
     }
+  }
+
+  @computed get balance () {
+    return this.contract ? this.contract.balance.toNumber() : undefined
   }
 
   async fetchContract (address) {

@@ -4,11 +4,10 @@ import { inject, observer } from 'mobx-react'
 export default inject('BountyListStore')(observer(props => {
   const { visibleBountyData } = props.BountyListStore
 
-  console.log('VIS DATA: ', visibleBountyData)
-  
   if (visibleBountyData) {
     const {
       bountyAddress,
+      balance,
       ipfsHash,
       title,
       description,
@@ -19,6 +18,7 @@ export default inject('BountyListStore')(observer(props => {
       <div>
         <h1>{title}</h1>
         <p>{description}</p>
+        <p>Balance: {balance}</p>
         <br /><br />
         <div>Contract Address: {bountyAddress}</div>
         <div>IPFS Hash: {ipfsHash}</div>
