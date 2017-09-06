@@ -1,6 +1,5 @@
 import { observable, action } from 'mobx'
 import contracts from 'eth/contracts'
-import storeBountyAddress from 'data/storeBountyAddress'
 import storeBountyData from 'data/storeBountyData'
 
 class CreateBountyFormStore {
@@ -36,9 +35,6 @@ class CreateBountyFormStore {
     const state = await bugBounty.state()
     const stateOutput = state.output()
     console.log(stateOutput)
-
-    const storeBountyRes = await storeBountyAddress(address)
-    return storeBountyRes
   }
 }
 
