@@ -12,11 +12,12 @@ class BountyDataStore {
   @action async fetch (address) {
     this.bountyAddress = address
     this.contractResult = fromPromise(this.fetchContract(address))
-    this.contractResult.then(() => {
+    return this.contractResult.then(() => {
       this.metadataResult = fromPromise(getBountyData(this.ipfsHash))
       return this.metadataResult
     }).then(() => {
       this.verifyResult = fromPromise(this.verifyBounty(address))
+      return this.verifyResult
     })
   }
 
@@ -72,4 +73,4 @@ class BountyDataStore {
   }
 }
 
-export default new BountyDataStore()
+export default BountyDataStore

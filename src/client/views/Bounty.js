@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { inject } from 'mobx-react'
 import BountyData from 'components/BountyData'
 
-@inject('BountyDataStore')
+@inject('BountyListStore')
 export default class Bounty extends Component {
   componentWillMount () {
-    const { BountyDataStore } = this.props
-    BountyDataStore.clear()
+    const { BountyListStore } = this.props
     const bountyAddress = this.props.match.params.address
-    BountyDataStore.fetch(bountyAddress)
+    BountyListStore.setVisible(bountyAddress)
   }
 
   render () {
